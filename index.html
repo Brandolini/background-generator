@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Gradient Background</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/animate.css">
+</head>
+<body id="bodyBackground">
+  <div class="container">
+
+    <h1>Background Generator</h1>
+    <h2>Current CSS Background</h2>
+    <h3></h3>
+    <input id="color1" type="color" name="color1" value="#aaaaaa">
+    <input id="color2" type="color" name="color2" value="#aa33bb">
+    <button id="random" class="btn">Random</button>
+
+
+
+
+  </div>
+  <script>
+    var body = document.getElementById("bodyBackground");
+    var cssColor = document.querySelector("h3");
+    var color1 = document.getElementById("color1");
+    var color2 = document.getElementById("color2");
+    var random = document.getElementById("random");
+    var defaultBackground = body.style.background =
+      "linear-gradient(to right, "
+      + color1.value
+      + ", "
+      + color2.value
+      +")";
+   var defaultCss = cssColor.textContent = body.style.background + ";";
+   function generateColor(){
+     body.style.background =
+       "linear-gradient(to right, "
+       + color1.value
+       + ", "
+       + color2.value
+       +")";
+       cssColor.textContent = body.style.background + ";";
+   }
+
+   function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  function generateRandomColor(){
+    body.style.background =
+      "linear-gradient(to right, "
+      + getRandomColor()
+      + ", "
+      + getRandomColor()
+      +")";
+      cssColor.textContent = body.style.background + ";";
+  }
+
+
+
+    color1.addEventListener("input", generateColor);
+    color2.addEventListener("input", generateColor);
+    random.addEventListener("click", generateRandomColor);
+
+
+  </script>
+</body>
+</html>
